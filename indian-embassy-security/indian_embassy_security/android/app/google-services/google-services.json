@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "368274571752",
+    "project_id": "indian-embassy-c4aad",
+    "storage_bucket": "indian-embassy-c4aad.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368274571752:android:401ba64938848ca261e45d",
+        "android_client_info": {
+          "package_name": "com.example.indian_embassy_security"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs9R4GCtM4HpBu1HPwWkheb-Kwrq3dRGM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
