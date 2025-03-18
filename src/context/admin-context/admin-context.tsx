@@ -58,8 +58,8 @@ export const AdminProvider = ({ children }: { children: React.ReactNode }) => {
 export const useAdmin = () => useContext(AdminContext);
 
 // Higher-order component to protect admin routes
-export function withAdminProtection<T>(Component: React.ComponentType<T>) {
-  return function ProtectedComponent(props: T) {
+export function withAdminProtection<P extends object>(Component: React.ComponentType<P>) {
+  return function ProtectedComponent(props: P) {
     const { isAdmin, isLoading } = useAdmin();
     const router = useRouter();
     
@@ -73,6 +73,6 @@ export function withAdminProtection<T>(Component: React.ComponentType<T>) {
       return <div>Loading...</div>;
     }
     
-    return isAdmin ? <Component {...props} /> : null;
+    return isAdmin ? <Component {...props as P} /> : null;
   };
 }
