@@ -1,6 +1,6 @@
 "use client";
 
-import { getDocument } from '../firestore';
+import { getDocument, Event } from '../firestore';
 import { QRCodeData, decryptQRData } from '../qr-utils';
 
 // Verify QR code and validate against event attendance
@@ -23,7 +23,7 @@ export const verifyQRCode = async (encodedData: string, eventId: string): Promis
     
     // Verify the user is registered for the event by checking Firebase
     try {
-      const event = await getDocument('events', data.eventId);
+      const event = await getDocument<Event>('events', data.eventId);
       
       if (!event) {
         return {
