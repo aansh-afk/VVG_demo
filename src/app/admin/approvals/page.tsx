@@ -119,7 +119,7 @@ export default function AdminApprovalsPage() {
         req.id === requestId 
           ? { 
               ...req, 
-              status: approve ? "approved" : "denied",
+              status: approve ? "approved" : "denied" as "pending" | "approved" | "denied",
               processedAt: Timestamp.now(),
               processedBy: user.uid
             } 
