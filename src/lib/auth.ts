@@ -8,7 +8,19 @@ import {
 } from "firebase/auth";
 import { auth, storage, db } from "./firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, getDoc, serverTimestamp, DocumentData } from "firebase/firestore";
+
+// Define UserData interface
+export interface UserData {
+  uid: string;
+  email: string | null;
+  displayName: string;
+  photoURL: string;
+  createdAt: Date;
+  groups: string[];
+  preApprovedEvents: string[];
+  role?: 'admin' | 'security' | 'user';
+}
 
 // Create a new user with email and password
 export const createUser = async (email: string, password: string, displayName: string, photoFile: File) => {
@@ -36,7 +48,8 @@ export const createUser = async (email: string, password: string, displayName: s
       photoURL,
       createdAt: serverTimestamp(),
       groups: [],
-      preApprovedEvents: []
+      preApprovedEvents: [],
+      role: 'user' // Default role
     });
     
     return user;
@@ -80,24 +93,25 @@ export const signOut = async () => {
 };
 
 // Get current user data from Firestore
-export const getUserData = async (userId: string) => {
+export const getUserData = async (userId: string): Promise<UserData | null> => {
   try {
     const userDoc = await getDoc(doc(db, "users", userId));
     if (userDoc.exists()) {
-      return userDoc.data();
+      return userDoc.data() as UserData;
     } else {
       // Get user information from Firebase Auth
       const currentUser = auth.currentUser;
       if (currentUser) {
         // Create a new user document in Firestore
-        const userData = {
+        const userData: UserData = {
           uid: currentUser.uid,
           email: currentUser.email,
           displayName: currentUser.displayName || "",
           photoURL: currentUser.photoURL || "",
           createdAt: new Date(),
           groups: [],
-          preApprovedEvents: []
+          preApprovedEvents: [],
+          role: 'user' // Default role
         };
         
         try {
