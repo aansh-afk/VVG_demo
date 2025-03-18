@@ -27,23 +27,23 @@
     "lucide-react": "^0.482.0",
     "next": "14.1.0",
     "next-themes": "^0.4.6",
+    "qr-scanner": "^1.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.54.2",
     "react-qr-code": "^2.0.15",
-    "qr-scanner": "^1.4.2",
     "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "autoprefixer": "^10.0.1",
-    "postcss": "^8",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "tailwindcss": "^3.3.0",
+    "@types/react": "18.2.60",
+    "@types/react-dom": "18.2.19",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }
 }
