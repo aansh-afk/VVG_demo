@@ -1,4 +1,4 @@
-import { initializeApp, getApps } from "firebase/app";
+import { initializeApp, getApps, FirebaseApp } from "firebase/app";
 import { getAuth, Auth } from "firebase/auth";
 import { getFirestore, Firestore } from "firebase/firestore";
 import { getStorage, FirebaseStorage } from "firebase/storage";
@@ -30,10 +30,11 @@ const firebaseConfig = process.env.NEXT_PUBLIC_FIREBASE_API_KEY ? {
 import { setPersistence, browserLocalPersistence, inMemoryPersistence } from "firebase/auth";
 
 // Initialize Firebase - safely handle both browser and build environments
-let app;
-let auth: Auth;
-let db: Firestore;
-let storage: FirebaseStorage;
+// Initialize with empty values that will be populated in the try-catch
+let app: FirebaseApp = {} as FirebaseApp;
+let auth: Auth = {} as Auth;
+let db: Firestore = {} as Firestore;
+let storage: FirebaseStorage = {} as FirebaseStorage;
 let analytics: Analytics | null = null;
 
 // Only initialize Firebase if we're in a browser or if we have valid config
@@ -82,11 +83,9 @@ try {
   // Provide fallbacks for build time when Firebase might not initialize properly
   console.warn("Firebase initialization error (this is normal during build):", error);
   
-  // Create empty stubs for build time to prevent errors
-  if (!app) app = { name: "[DEFAULT]" };
-  if (!auth) auth = { currentUser: null, onAuthStateChanged: () => () => {} } as unknown as Auth;
-  if (!db) db = {} as unknown as Firestore;
-  if (!storage) storage = {} as unknown as FirebaseStorage;
+  // Override with more specific stubs
+  app = { name: "[DEFAULT]" } as unknown as FirebaseApp;
+  auth = { currentUser: null, onAuthStateChanged: () => () => {} } as unknown as Auth;
 }
 
 export { app, auth, db, storage, analytics };

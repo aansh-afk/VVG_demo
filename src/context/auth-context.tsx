@@ -2,11 +2,11 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { User } from "firebase/auth";
-import { onAuthStateChange, getUserData } from "@/lib/auth";
+import { onAuthStateChange, getUserData, UserData } from "@/lib/auth";
 
 type AuthContextType = {
   user: User | null;
-  userData: any | null;
+  userData: UserData | null;
   isLoading: boolean;
 };
 
@@ -18,7 +18,7 @@ const AuthContext = createContext<AuthContextType>({
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [userData, setUserData] = useState<any | null>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -49,8 +49,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 email: authUser.email,
                 displayName: authUser.displayName || "",
                 photoURL: authUser.photoURL || "",
+                createdAt: new Date(),
                 groups: [],
-                preApprovedEvents: []
+                preApprovedEvents: [],
+                role: 'user'
               });
             }
           }
