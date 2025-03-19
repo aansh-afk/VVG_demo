@@ -1,8 +1,8 @@
 import { initializeApp, getApps } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
-import { getAnalytics, isSupported } from "firebase/analytics";
+import { getAuth, Auth } from "firebase/auth";
+import { getFirestore, Firestore } from "firebase/firestore";
+import { getStorage, FirebaseStorage } from "firebase/storage";
+import { getAnalytics, isSupported, Analytics } from "firebase/analytics";
 
 // Default dummy config for build time
 const dummyConfig = {
@@ -31,10 +31,10 @@ import { setPersistence, browserLocalPersistence, inMemoryPersistence } from "fi
 
 // Initialize Firebase - safely handle both browser and build environments
 let app;
-let auth;
-let db;
-let storage;
-let analytics = null;
+let auth: Auth;
+let db: Firestore;
+let storage: FirebaseStorage;
+let analytics: Analytics | null = null;
 
 // Only initialize Firebase if we're in a browser or if we have valid config
 try {
@@ -84,9 +84,9 @@ try {
   
   // Create empty stubs for build time to prevent errors
   if (!app) app = { name: "[DEFAULT]" };
-  if (!auth) auth = { currentUser: null, onAuthStateChanged: () => () => {} };
-  if (!db) db = {};
-  if (!storage) storage = {};
+  if (!auth) auth = { currentUser: null, onAuthStateChanged: () => () => {} } as unknown as Auth;
+  if (!db) db = {} as unknown as Firestore;
+  if (!storage) storage = {} as unknown as FirebaseStorage;
 }
 
 export { app, auth, db, storage, analytics };
