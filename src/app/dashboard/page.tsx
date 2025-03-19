@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Event, ApprovalRequest, queryDocuments } from "@/lib/firestore";
 import { where, limit, orderBy, Timestamp } from "firebase/firestore";
+import { Preloader } from "@/components/ui/preloader";
 
 export default function DashboardPage() {
   const { user, userData, isLoading } = useAuth();
@@ -81,22 +82,23 @@ export default function DashboardPage() {
 
   return (
     <DashboardLayout>
+      <Preloader />
       <div className="flex flex-col space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>
             <h1 className="text-2xl font-bold">Welcome, {user.displayName?.split(' ')[0] || 'Guest'}</h1>
             <p className="text-slate-600 dark:text-slate-400">
-              Here's what's happening with your embassy events
+              Here's what's happening with your upcoming events
             </p>
           </div>
-          <Button asChild className="mt-4 md:mt-0">
+          <Button asChild className="mt-4 md:mt-0 bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all duration-200">
             <Link href="/dashboard/events">Browse All Events</Link>
           </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Upcoming Events Card */}
-          <Card>
+          <Card className="border-gray-200 dark:border-gray-800 hover-effect">
             <CardHeader className="pb-2">
               <CardTitle className="text-lg">Upcoming Events</CardTitle>
               <CardDescription>Events happening soon</CardDescription>
@@ -114,7 +116,12 @@ export default function DashboardPage() {
                           {formatEventDate(event.datetime)}
                         </p>
                       </div>
-                      <Button variant="outline" size="sm" asChild>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        asChild
+                        className="border-black text-black hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-gray-900 transition-all duration-200"
+                      >
                         <Link href={`/dashboard/events/${event.id}`}>
                           View
                         </Link>
@@ -131,7 +138,7 @@ export default function DashboardPage() {
           </Card>
 
           {/* My Registrations Card */}
-          <Card>
+          <Card className="border-gray-200 dark:border-gray-800 hover-effect">
             <CardHeader className="pb-2">
               <CardTitle className="text-lg">My Registrations</CardTitle>
               <CardDescription>Events you're attending</CardDescription>
@@ -149,7 +156,12 @@ export default function DashboardPage() {
                           {formatEventDate(event.datetime)}
                         </p>
                       </div>
-                      <Button variant="outline" size="sm" asChild>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        asChild
+                        className="border-black text-black hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-gray-900 transition-all duration-200"
+                      >
                         <Link href={`/dashboard/qr-codes?eventId=${event.id}`}>
                           QR Code
                         </Link>
@@ -166,7 +178,7 @@ export default function DashboardPage() {
           </Card>
 
           {/* Pending Approvals Card */}
-          <Card>
+          <Card className="border-gray-200 dark:border-gray-800 hover-effect">
             <CardHeader className="pb-2">
               <CardTitle className="text-lg">Pending Requests</CardTitle>
               <CardDescription>Your approval requests</CardDescription>
@@ -200,25 +212,37 @@ export default function DashboardPage() {
         </div>
 
         {/* Quick Actions Section */}
-        <Card>
+        <Card className="border-gray-200 dark:border-gray-800">
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <Button asChild variant="outline" className="h-24 flex flex-col items-center justify-center">
+              <Button 
+                asChild 
+                variant="outline" 
+                className="h-24 flex flex-col items-center justify-center border-black text-black hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-gray-900 transition-all duration-200 hover-effect"
+              >
                 <Link href="/dashboard/events">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
                   Browse Events
                 </Link>
               </Button>
-              <Button asChild variant="outline" className="h-24 flex flex-col items-center justify-center">
+              <Button 
+                asChild 
+                variant="outline" 
+                className="h-24 flex flex-col items-center justify-center border-black text-black hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-gray-900 transition-all duration-200 hover-effect"
+              >
                 <Link href="/dashboard/registrations">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                   My Registrations
                 </Link>
               </Button>
-              <Button asChild variant="outline" className="h-24 flex flex-col items-center justify-center">
+              <Button 
+                asChild 
+                variant="outline" 
+                className="h-24 flex flex-col items-center justify-center border-black text-black hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-gray-900 transition-all duration-200 hover-effect"
+              >
                 <Link href="/dashboard/qr-codes">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/></svg>
                   My QR Codes

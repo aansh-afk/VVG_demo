@@ -50,9 +50,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-white dark:bg-black flex flex-col md:flex-row">
       {/* Mobile Header */}
-      <div className="md:hidden bg-white dark:bg-slate-800 p-4 flex items-center justify-between shadow-sm">
+      <div className="md:hidden bg-white dark:bg-black p-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
           <Image src="/vvg-icon.png" alt="VVG Logo" width={40} height={40} />
           <h1 className="ml-2 font-semibold">VVG Demo</h1>
@@ -71,7 +71,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-slate-800 shadow-md z-20 absolute top-16 inset-x-0">
+        <div className="md:hidden bg-white dark:bg-black shadow-md z-20 absolute top-16 inset-x-0">
           <div className="flex flex-col p-4">
             {navItems.map((item) => (
               <Link
@@ -100,7 +100,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
       {/* Sidebar (desktop) */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <div className="flex-1 flex flex-col min-h-0 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700">
+        <div className="flex-1 flex flex-col min-h-0 bg-white dark:bg-black border-r border-slate-200 dark:border-gray-800">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center justify-center flex-shrink-0 px-4 mb-5">
               <Image src="/vvg-icon.png" alt="VVG Logo" width={50} height={50} />
@@ -122,7 +122,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
               ))}
             </nav>
           </div>
-          <div className="flex-shrink-0 flex border-t border-slate-200 dark:border-slate-700 p-4">
+          <div className="flex-shrink-0 flex border-t border-slate-200 dark:border-gray-800 p-4">
             <div className="flex items-center w-full">
               <Avatar className="h-10 w-10">
                 <AvatarImage src={user?.photoURL || ""} alt={user?.displayName || ""} />
@@ -147,9 +147,13 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
       {/* Main Content */}
       <div className="md:pl-64 flex flex-col flex-1">
-        <main className="flex-1 p-4 md:p-6">
+        <main className="flex-1 p-4 md:p-6 fade-in">
           {children}
         </main>
+        <div className="footer-gradient"></div>
+        <footer className="text-center py-4 text-sm text-gray-700 dark:text-gray-300">
+          © {new Date().getFullYear()} VVG Demo. All rights reserved.
+        </footer>
       </div>
     </div>
   );

@@ -17,12 +17,13 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "VVG Demo",
-  description: "Event management and guest registration demo platform",
+  description: "Minimalist event management and guest registration platform",
   icons: {
     icon: '/icons/favicon.ico',
     apple: '/icons/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
+  themeColor: '#000000',
 };
 
 export default function RootLayout({
@@ -35,7 +36,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
           <AuthProvider>
             {children}
             <Toaster />

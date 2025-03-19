@@ -63,24 +63,24 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4 bg-white dark:bg-slate-900">
+    <div className="flex min-h-screen items-center justify-center p-4 bg-white dark:bg-black">
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 fade-in">
           <Image 
             src="/vvg-logo.png" 
             alt="VVG Logo" 
             width={100} 
             height={100} 
-            className="mx-auto mb-4"
+            className="mx-auto mb-4 hover-effect"
           />
           <h1 className="text-2xl font-bold text-black dark:text-white">VVG Demo</h1>
         </div>
 
-        <Card>
+        <Card className="border border-gray-200 dark:border-gray-800 slide-up">
           <CardHeader>
             <CardTitle>Create an account</CardTitle>
             <CardDescription>
-              Enter your details to register for the embassy portal
+              Enter your details to register for the VVG events platform
             </CardDescription>
           </CardHeader>
           <form onSubmit={handleSubmit}>
@@ -175,7 +175,7 @@ export default function RegisterPage() {
                       type="button" 
                       variant="outline" 
                       onClick={() => fileInputRef.current?.click()}
-                      className="w-full"
+                      className="w-full border-black text-black hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-gray-900 transition-all duration-200"
                     >
                       Upload Photo
                     </Button>
@@ -187,12 +187,16 @@ export default function RegisterPage() {
               </div>
             </CardContent>
             <CardFooter className="flex flex-col space-y-4">
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button 
+                type="submit" 
+                className="w-full bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all duration-200" 
+                disabled={isLoading}
+              >
                 {isLoading ? "Creating account..." : "Create Account"}
               </Button>
               <div className="text-center text-sm">
                 Already have an account?{" "}
-                <Link href="/auth/login" className="text-blue-600 hover:underline">
+                <Link href="/auth/login" className="text-black dark:text-white font-medium hover:opacity-80 transition-opacity">
                   Sign in
                 </Link>
               </div>
