@@ -7,10 +7,11 @@ const nextConfig = {
   
   // Disable static page generation for protected routes
   // This prevents build errors for pages that require authentication
+  
+  // Note: Server Actions are now available by default in Next.js
   experimental: {
     // Only generate pages during build time that don't require authentication
     // Other pages will be generated on-demand at runtime
-    serverActions: true
   },
   
   async headers() {
