@@ -1,6 +1,6 @@
-# Indian Embassy Portal
+# VVG Event Management Demo
 
-A comprehensive web application for the Indian Embassy designed to streamline event management, user registration, and security processes.
+A sleek, minimalist black and white themed web application designed to streamline event management, user registration, and security processes.
 
 ## Features
 
@@ -80,11 +80,30 @@ npm run dev
 
 ## Deployment
 
-This application can be deployed on Vercel:
+### Deploy to Vercel
+
+1. Fork or clone this repository to your GitHub account
+2. Sign up for a free [Vercel](https://vercel.com) account
+3. Create a new project in Vercel and link your GitHub repository
+4. Under "Environment Variables", add your Firebase configuration:
+   - NEXT_PUBLIC_FIREBASE_API_KEY
+   - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+   - NEXT_PUBLIC_FIREBASE_PROJECT_ID
+   - NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+   - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+   - NEXT_PUBLIC_FIREBASE_APP_ID
+   - NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+5. Deploy the application
+
+### Manual Deployment
+
+You can also build the application manually:
 
 ```bash
 npm run build
 ```
+
+The built application will be in the `.next` directory, which you can deploy to any static hosting service.
 
 ## License
 
