@@ -74,23 +74,23 @@ export default function SecurityLayout({
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black flex flex-col md:flex-row">
+    <div className="min-h-screen bg-background flex flex-col md:flex-row">
       {/* Mobile Header */}
-      <div className="md:hidden bg-white dark:bg-black p-4 flex items-center justify-between shadow-sm">
+      <div className="md:hidden bg-sidebar p-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
-          <Image src="/vvg-logo.svg" alt="VVG Logo" width={40} height={40} priority />
-          <h1 className="ml-2 font-semibold text-black dark:text-white">VVG Security</h1>
+          <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={40} height={30} priority />
+          <h1 className="ml-2 font-semibold text-sidebar-foreground">Secure Events Security</h1>
         </div>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-slate-600 dark:text-slate-300"
+          className="text-sidebar-foreground"
         >
           {isMobileMenuOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -102,16 +102,16 @@ export default function SecurityLayout({
 
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-black shadow-md z-20 absolute top-16 inset-x-0">
+        <div className="md:hidden bg-sidebar shadow-md z-20 absolute top-16 inset-x-0">
           <div className="flex flex-col p-4">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center py-3 px-4 rounded-md transition-all duration-200 ${
+                className={`flex items-center py-3 px-4 rounded-md transition-colors duration-200 ${
                   isActive(item.href)
-                    ? "bg-slate-100 dark:bg-gray-800 text-black dark:text-white font-medium"
-                    : "text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-gray-800"
+                    ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                    : "text-sidebar-foreground hover:bg-sidebar-accent/50"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -120,7 +120,7 @@ export default function SecurityLayout({
             ))}
             <Button 
               variant="outline" 
-              className="mt-4 border-black text-black hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-gray-800 transition-all duration-200"
+              className="mt-4 border-sidebar-accent text-sidebar-foreground hover:bg-sidebar-accent/50"
               onClick={handleSignOut}
             >
               Sign Out
@@ -131,21 +131,21 @@ export default function SecurityLayout({
 
       {/* Sidebar (desktop) */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <div className="flex-1 flex flex-col min-h-0 bg-white dark:bg-black border-r border-slate-200 dark:border-gray-800">
+        <div className="flex-1 flex flex-col min-h-0 bg-sidebar text-sidebar-foreground border-r border-sidebar-border">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center justify-center flex-shrink-0 px-4 mb-5 hover-effect">
-              <Image src="/vvg-logo.svg" alt="VVG Logo" width={50} height={50} priority />
-              <h1 className="ml-2 text-lg font-semibold text-black dark:text-white">VVG Security</h1>
+              <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={50} height={30} priority />
+              <h1 className="ml-2 text-lg font-semibold text-sidebar-foreground">Secure Events Security</h1>
             </div>
             <nav className="mt-5 flex-1 px-2 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`group flex items-center px-4 py-3 text-sm font-medium rounded-md transition-all duration-200 ${
+                  className={`group flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors duration-200 ${
                     isActive(item.href)
-                      ? "bg-slate-100 dark:bg-gray-800 text-black dark:text-white font-medium"
-                      : "text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-gray-800"
+                      ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                      : "text-sidebar-foreground hover:bg-sidebar-accent/50"
                   }`}
                 >
                   {item.name}
@@ -153,19 +153,19 @@ export default function SecurityLayout({
               ))}
             </nav>
           </div>
-          <div className="flex-shrink-0 flex border-t border-slate-200 dark:border-gray-800 p-4">
+          <div className="flex-shrink-0 flex border-t border-sidebar-border p-4">
             <div className="flex items-center w-full">
-              <Avatar className="h-10 w-10">
+              <Avatar className="h-10 w-10 bg-sidebar-accent">
                 <AvatarImage src={userData?.photoURL || ""} alt={userData?.displayName || ""} />
-                <AvatarFallback>{userData?.displayName ? getInitials(userData.displayName) : "S"}</AvatarFallback>
+                <AvatarFallback className="text-sidebar-accent-foreground">{userData?.displayName ? getInitials(userData.displayName) : "S"}</AvatarFallback>
               </Avatar>
               <div className="ml-3 min-w-0 flex-1">
-                <div className="text-sm font-medium text-black dark:text-white truncate">
+                <div className="text-sm font-medium text-sidebar-foreground truncate">
                   {userData?.displayName || "Security Staff"}
                 </div>
                 <Button 
                   variant="ghost" 
-                  className="text-xs text-black dark:text-white p-0 h-auto hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200"
+                  className="text-xs text-sidebar-foreground p-0 h-auto hover:text-sidebar-accent-foreground transition-colors duration-200"
                   onClick={handleSignOut}
                 >
                   Sign out
@@ -182,8 +182,8 @@ export default function SecurityLayout({
           {children}
         </main>
         <div className="footer-gradient"></div>
-        <footer className="text-center py-4 text-sm text-gray-700 dark:text-gray-300">
-          © {new Date().getFullYear()} VVG Demo. All rights reserved.
+        <footer className="text-center py-4 text-sm text-muted-foreground">
+          © {new Date().getFullYear()} NTT Group. All rights reserved. | Secure Events
         </footer>
       </div>
     </div>

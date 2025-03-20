@@ -42,31 +42,31 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-white dark:bg-black">
+    <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-background">
       <div className="w-full max-w-md fade-in">
         <div className="text-center mb-8 hover-effect">
           <Image 
-            src="/vvg-logo.svg" 
-            alt="VVG Logo" 
-            width={100} 
-            height={100} 
+            src="/ntt-logo.svg" 
+            alt="NTT Group Logo" 
+            width={140} 
+            height={80} 
             className="mx-auto mb-4"
             priority
           />
-          <h1 className="text-2xl font-bold text-black dark:text-white slide-up">VVG Admin Portal</h1>
+          <h1 className="text-2xl font-bold text-primary slide-up">Secure Events Admin Portal</h1>
         </div>
 
-        <Card className="bg-white dark:bg-black border-gray-200 dark:border-gray-800">
+        <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="text-black dark:text-white">Admin Sign In</CardTitle>
-            <CardDescription className="text-gray-700 dark:text-gray-400">
+            <CardTitle className="text-foreground">Admin Sign In</CardTitle>
+            <CardDescription className="text-muted-foreground">
               Enter your admin credentials to access the admin panel
             </CardDescription>
           </CardHeader>
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium">
+                <label htmlFor="email" className="text-sm font-medium text-foreground">
                   Email
                 </label>
                 <Input
@@ -76,14 +76,15 @@ export default function AdminLoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  className="bg-background border-input"
                 />
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="text-sm font-medium">
+                  <label htmlFor="password" className="text-sm font-medium text-foreground">
                     Password
                   </label>
-                  <Link href="/auth/forgot-password" className="text-xs text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:underline">
+                  <Link href="/auth/forgot-password" className="text-xs text-primary hover:text-accent transition-colors duration-200 hover:underline">
                     Forgot password?
                   </Link>
                 </div>
@@ -94,15 +95,16 @@ export default function AdminLoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  className="bg-background border-input"
                 />
               </div>
             </CardContent>
             <CardFooter className="flex flex-col space-y-4">
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-accent transition-colors duration-200" disabled={isLoading}>
                 {isLoading ? "Signing in..." : "Sign In as Admin"}
               </Button>
-              <div className="text-center text-sm">
-                <Link href="/auth/login" className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:underline">
+              <div className="text-center text-sm text-foreground">
+                <Link href="/auth/login" className="text-primary hover:text-accent transition-colors duration-200 hover:underline">
                   Return to regular login
                 </Link>
               </div>
@@ -112,8 +114,8 @@ export default function AdminLoginPage() {
       </div>
       
       <div className="w-full mt-16 footer-gradient"></div>
-      <footer className="w-full text-center py-4 text-sm text-gray-700 dark:text-gray-300">
-        © {new Date().getFullYear()} VVG. All rights reserved. | Demo Version
+      <footer className="w-full text-center py-4 text-sm text-muted-foreground">
+        © {new Date().getFullYear()} NTT Group. All rights reserved. | Secure Events
       </footer>
     </div>
   );

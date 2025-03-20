@@ -75,16 +75,16 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black flex flex-col md:flex-row">
+    <div className="min-h-screen bg-background flex flex-col md:flex-row">
       {/* Mobile Header */}
-      <div className="md:hidden bg-white dark:bg-black p-4 flex items-center justify-between shadow-sm">
+      <div className="md:hidden bg-background p-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
-          <Image src="/vvg-logo.svg" alt="VVG Logo" width={40} height={40} priority />
-          <h1 className="ml-2 font-semibold text-black dark:text-white">VVG Demo</h1>
+          <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={40} height={30} priority />
+          <h1 className="ml-2 font-semibold text-primary">Secure Events</h1>
         </div>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-slate-600 dark:text-slate-300"
+          className="text-foreground"
         >
           {isMobileMenuOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -96,16 +96,16 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-black shadow-md z-20 absolute top-16 inset-x-0">
+        <div className="md:hidden bg-card shadow-md z-20 absolute top-16 inset-x-0">
           <div className="flex flex-col p-4">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center py-3 px-4 rounded-md ${
+                className={`flex items-center py-3 px-4 rounded-md transition-colors duration-200 ${
                   isActive(item.href)
-                    ? "bg-slate-100 dark:bg-slate-700 text-black dark:text-white font-medium"
-                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+                    ? "bg-secondary text-primary font-medium"
+                    : "text-foreground hover:bg-secondary"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -114,7 +114,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             ))}
             <Button 
               variant="outline" 
-              className="mt-4"
+              className="mt-4 border-primary text-primary hover:bg-secondary"
               onClick={handleSignOut}
             >
               Sign Out
@@ -125,21 +125,21 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
       {/* Sidebar (desktop) */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <div className="flex-1 flex flex-col min-h-0 bg-white dark:bg-black border-r border-slate-200 dark:border-gray-800">
+        <div className="flex-1 flex flex-col min-h-0 bg-sidebar text-sidebar-foreground border-r border-sidebar-border">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center justify-center flex-shrink-0 px-4 mb-5 hover-effect">
-              <Image src="/vvg-logo.svg" alt="VVG Logo" width={50} height={50} priority />
-              <h1 className="ml-2 text-lg font-semibold text-black dark:text-white">VVG Demo</h1>
+              <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={50} height={30} priority />
+              <h1 className="ml-2 text-lg font-semibold text-sidebar-foreground">Secure Events</h1>
             </div>
             <nav className="mt-5 flex-1 px-2 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`group flex items-center px-4 py-3 text-sm font-medium rounded-md ${
+                  className={`group flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors duration-200 ${
                     isActive(item.href)
-                      ? "bg-slate-100 dark:bg-slate-700 text-black dark:text-white font-medium"
-                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+                      ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                      : "text-sidebar-foreground hover:bg-sidebar-accent/50"
                   }`}
                 >
                   {item.name}
@@ -147,19 +147,19 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
               ))}
             </nav>
           </div>
-          <div className="flex-shrink-0 flex border-t border-slate-200 dark:border-gray-800 p-4">
+          <div className="flex-shrink-0 flex border-t border-sidebar-border p-4">
             <div className="flex items-center w-full">
-              <Avatar className="h-10 w-10">
+              <Avatar className="h-10 w-10 bg-sidebar-accent text-sidebar-accent-foreground">
                 <AvatarImage src={user?.photoURL || ""} alt={user?.displayName || ""} />
                 <AvatarFallback>{user?.displayName ? getInitials(user.displayName) : "U"}</AvatarFallback>
               </Avatar>
               <div className="ml-3 min-w-0 flex-1">
-                <div className="text-sm font-medium text-slate-700 dark:text-slate-200 truncate">
+                <div className="text-sm font-medium text-sidebar-foreground truncate">
                   {user?.displayName || "User"}
                 </div>
                 <Button 
                   variant="ghost" 
-                  className="text-xs text-black dark:text-white p-0 h-auto hover:text-gray-600 dark:hover:text-gray-300"
+                  className="text-xs text-sidebar-foreground p-0 h-auto hover:text-sidebar-accent-foreground"
                   onClick={handleSignOut}
                 >
                   Sign out
@@ -176,8 +176,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
           {children}
         </main>
         <div className="footer-gradient"></div>
-        <footer className="text-center py-4 text-sm text-gray-700 dark:text-gray-300">
-          © {new Date().getFullYear()} VVG Demo. All rights reserved.
+        <footer className="text-center py-4 text-sm text-muted-foreground">
+          © {new Date().getFullYear()} NTT Group. All rights reserved. | Secure Events
         </footer>
       </div>
     </div>

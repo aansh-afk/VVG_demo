@@ -16,8 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VVG Demo",
-  description: "Minimalist event management and guest registration platform",
+  title: "Secure Events - NTT Group",
+  description: "Secure event management and guest registration platform by NTT Group",
   icons: {
     icon: '/icons/favicon.ico',
     apple: '/icons/apple-touch-icon.png',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#000000',
+  themeColor: '#1551D7',
 };
 
 export default function RootLayout({
@@ -39,7 +39,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
+        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light">
           <AuthProvider>
             {children}
             <Toaster />

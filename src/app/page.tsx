@@ -37,74 +37,74 @@ export default function Home() {
         <div className="preloader-spinner"></div>
       </div>
 
-      <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-white dark:bg-black">
+      <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-background">
         <main className="flex flex-col items-center max-w-5xl mx-auto text-center fade-in">
           <div className="mb-8 hover-effect">
             <Image 
-              src="/vvg-logo.png" 
-              alt="VVG Logo" 
-              width={140} 
-              height={140} 
+              src="/ntt-logo.svg" 
+              alt="NTT Group Logo" 
+              width={180} 
+              height={100} 
               className="mx-auto"
               priority
             />
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-black dark:text-white slide-up">
-            VVG Demo
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-primary slide-up">
+            Secure Events
           </h1>
           
-          <p className="text-xl mb-8 max-w-2xl text-gray-700 dark:text-gray-300 slide-up" style={{animationDelay: '0.1s'}}>
-            Secure event management and guest registration platform
+          <p className="text-xl mb-8 max-w-2xl text-muted-foreground slide-up" style={{animationDelay: '0.1s'}}>
+            Secure event management and guest registration platform by NTT Group
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
-            <Card className="bg-white dark:bg-black border-gray-200 dark:border-gray-800 hover-effect" style={{animationDelay: '0.2s'}}>
+            <Card className="bg-card hover-effect" style={{animationDelay: '0.2s'}}>
               <CardHeader>
-                <CardTitle className="text-black dark:text-white">User Portal</CardTitle>
-                <CardDescription className="text-gray-700 dark:text-gray-400">For guests and attendees</CardDescription>
+                <CardTitle className="text-foreground">User Portal</CardTitle>
+                <CardDescription className="text-muted-foreground">For guests and attendees</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
+                <p className="text-sm text-muted-foreground">
                   Register for events, manage your profile, and get event QR codes for easy check-in.
                 </p>
               </CardContent>
               <CardFooter>
-                <Button asChild className="w-full bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all duration-200">
+                <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-accent transition-all duration-200">
                   <Link href="/auth/login">Sign In / Register</Link>
                 </Button>
               </CardFooter>
             </Card>
 
-            <Card className="bg-white dark:bg-black border-gray-200 dark:border-gray-800 hover-effect" style={{animationDelay: '0.3s'}}>
+            <Card className="bg-card hover-effect" style={{animationDelay: '0.3s'}}>
               <CardHeader>
-                <CardTitle className="text-black dark:text-white">Admin Portal</CardTitle>
-                <CardDescription className="text-gray-700 dark:text-gray-400">For staff and organizers</CardDescription>
+                <CardTitle className="text-foreground">Admin Portal</CardTitle>
+                <CardDescription className="text-muted-foreground">For staff and organizers</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
+                <p className="text-sm text-muted-foreground">
                   Manage events, approve registrations, create user groups, and handle security access.
                 </p>
               </CardContent>
               <CardFooter>
-                <Button asChild variant="outline" className="w-full border-black text-black hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-gray-900 transition-all duration-200">
+                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-secondary transition-all duration-200">
                   <Link href="/auth/admin/login">Admin Login</Link>
                 </Button>
               </CardFooter>
             </Card>
 
-            <Card className="bg-white dark:bg-black border-gray-200 dark:border-gray-800 hover-effect" style={{animationDelay: '0.4s'}}>
+            <Card className="bg-card hover-effect" style={{animationDelay: '0.4s'}}>
               <CardHeader>
-                <CardTitle className="text-black dark:text-white">Security Portal</CardTitle>
-                <CardDescription className="text-gray-700 dark:text-gray-400">For security personnel</CardDescription>
+                <CardTitle className="text-foreground">Security Portal</CardTitle>
+                <CardDescription className="text-muted-foreground">For security personnel</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
+                <p className="text-sm text-muted-foreground">
                   Scan QR codes, verify attendees, and ensure secure access to events.
                 </p>
               </CardContent>
               <CardFooter>
-                <Button asChild variant="outline" className="w-full border-black text-black hover:bg-gray-100 dark:border-white dark:text-white dark:hover:bg-gray-900 transition-all duration-200">
+                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-secondary transition-all duration-200">
                   <Link href="/auth/security/login">Security Login</Link>
                 </Button>
               </CardFooter>
@@ -113,8 +113,8 @@ export default function Home() {
         </main>
 
         <div className="w-full mt-16 footer-gradient"></div>
-        <footer className="w-full text-center py-4 text-sm text-gray-700 dark:text-gray-300">
-          © {new Date().getFullYear()} VVG. All rights reserved. | Demo Version
+        <footer className="w-full text-center py-4 text-sm text-muted-foreground">
+          © {new Date().getFullYear()} NTT Group. All rights reserved. | Secure Events
         </footer>
       </div>
     </>
