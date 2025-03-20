@@ -130,13 +130,12 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
       {/* Sidebar (desktop) */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <div className="flex-1 flex flex-col min-h-0 bg-sidebar">
-          <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div className="flex items-center justify-center flex-shrink-0 px-4 mb-5 hover-effect">
-              <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={50} height={30} priority />
-              <h1 className="ml-2 text-lg font-semibold text-sidebar-foreground">Secure Events Admin</h1>
+        <div className="sidebar flex-1 flex flex-col min-h-0 bg-sidebar">
+          <div className="flex-1 flex flex-col overflow-y-auto">
+            <div className="logo-container mb-5">
+              <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={60} height={40} priority className="hover-effect" />
             </div>
-            <nav className="mt-5 flex-1 px-2 space-y-1">
+            <nav className="mt-2 flex-1 px-2 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -176,9 +175,11 @@ export function AdminLayout({ children }: AdminLayoutProps) {
       </div>
 
       {/* Main Content */}
-      <div className="md:pl-64 flex flex-col flex-1">
+      <div className="md:pl-64 flex flex-col flex-1 main-content">
         <main className="flex-1 p-4 md:p-6 fade-in">
-          {children}
+          <div className="content-area">
+            {children}
+          </div>
         </main>
         <div className="footer-gradient"></div>
         <footer className="text-center py-4 text-sm text-muted-foreground">

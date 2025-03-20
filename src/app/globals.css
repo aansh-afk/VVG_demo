@@ -164,6 +164,33 @@
   box-shadow: 0 4px 12px rgba(21, 81, 215, 0.1);
 }
 
+/* Sidebar and content separation */
+.sidebar {
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-right: 1px solid var(--border);
+}
+
+.main-content {
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+.content-area {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: 1rem;
+  padding: 1.5rem;
+}
+
+/* Logo container */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

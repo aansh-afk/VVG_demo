@@ -77,14 +77,14 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div className="min-h-screen bg-background flex flex-col md:flex-row">
       {/* Mobile Header */}
-      <div className="md:hidden bg-background p-4 flex items-center justify-between shadow-sm">
+      <div className="md:hidden bg-sidebar p-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
           <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={40} height={30} priority />
-          <h1 className="ml-2 font-semibold text-primary">Secure Events</h1>
+          <h1 className="ml-2 font-semibold text-sidebar-foreground">Secure Events</h1>
         </div>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-foreground"
+          className="text-sidebar-foreground"
         >
           {isMobileMenuOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -96,7 +96,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-card shadow-md z-20 absolute top-16 inset-x-0">
+        <div className="md:hidden bg-sidebar shadow-md z-20 absolute top-16 inset-x-0">
           <div className="flex flex-col p-4">
             {navItems.map((item) => (
               <Link
@@ -104,8 +104,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                 href={item.href}
                 className={`flex items-center py-3 px-4 rounded-md transition-colors duration-200 ${
                   isActive(item.href)
-                    ? "bg-secondary text-primary font-medium"
-                    : "text-foreground hover:bg-secondary"
+                    ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                    : "text-sidebar-foreground hover:bg-sidebar-accent/50"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -114,7 +114,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             ))}
             <Button 
               variant="outline" 
-              className="mt-4 border-primary text-primary hover:bg-secondary"
+              className="mt-4 border-sidebar-accent text-sidebar-foreground hover:bg-sidebar-accent/50"
               onClick={handleSignOut}
             >
               Sign Out
@@ -125,13 +125,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
       {/* Sidebar (desktop) */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <div className="flex-1 flex flex-col min-h-0 bg-sidebar text-sidebar-foreground border-r border-sidebar-border">
-          <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div className="flex items-center justify-center flex-shrink-0 px-4 mb-5 hover-effect">
-              <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={50} height={30} priority />
-              <h1 className="ml-2 text-lg font-semibold text-sidebar-foreground">Secure Events</h1>
+        <div className="sidebar flex-1 flex flex-col min-h-0 bg-sidebar text-sidebar-foreground">
+          <div className="flex-1 flex flex-col overflow-y-auto">
+            <div className="logo-container mb-5">
+              <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={60} height={40} priority className="hover-effect" />
             </div>
-            <nav className="mt-5 flex-1 px-2 space-y-1">
+            <nav className="mt-2 flex-1 px-2 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -171,9 +170,11 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       </div>
 
       {/* Main Content */}
-      <div className="md:pl-64 flex flex-col flex-1">
+      <div className="md:pl-64 flex flex-col flex-1 main-content">
         <main className="flex-1 p-4 md:p-6 fade-in">
-          {children}
+          <div className="content-area">
+            {children}
+          </div>
         </main>
         <div className="footer-gradient"></div>
         <footer className="text-center py-4 text-sm text-muted-foreground">
