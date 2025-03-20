@@ -110,7 +110,7 @@ export default function SecurityLayout({
                 href={item.href}
                 className={`flex items-center py-3 px-4 rounded-md transition-colors duration-200 ${
                   isActive(item.href)
-                    ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                    ? "bg-[#89A5E8] text-white font-medium border-l-4 border-white"
                     : "text-sidebar-foreground hover:bg-sidebar-accent/50"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -143,7 +143,7 @@ export default function SecurityLayout({
                   href={item.href}
                   className={`group flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors duration-200 ${
                     isActive(item.href)
-                      ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                      ? "bg-[#89A5E8] text-white font-medium border-l-4 border-white"
                       : "text-sidebar-foreground hover:bg-sidebar-accent/50"
                   }`}
                 >
