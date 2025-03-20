@@ -56,11 +56,11 @@ export default function AdminUsersPage() {
   const getUserRoleDisplay = (role?: string) => {
     switch (role) {
       case 'admin':
-        return <span className="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs rounded-full">Admin</span>;
+        return <span className="px-2 py-1 bg-[#EDF2FF] text-primary text-xs rounded-full">Admin</span>;
       case 'security':
-        return <span className="px-2 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 text-xs rounded-full">Security</span>;
+        return <span className="px-2 py-1 bg-[#EDF2FF] text-accent text-xs rounded-full">Security</span>;
       default:
-        return <span className="px-2 py-1 bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-200 text-xs rounded-full">User</span>;
+        return <span className="px-2 py-1 bg-[#F7EFE6] text-foreground text-xs rounded-full">User</span>;
     }
   };
 
@@ -119,7 +119,7 @@ export default function AdminUsersPage() {
             {filteredUsers.map((user) => (
               <Card key={user.uid} className="overflow-hidden">
                 <CardContent className="p-0">
-                  <div className="p-4 bg-white dark:bg-slate-800">
+                  <div className="p-4">
                     <div className="flex justify-between items-center">
                       <div className="flex items-center space-x-4">
                         <Avatar className="h-12 w-12">

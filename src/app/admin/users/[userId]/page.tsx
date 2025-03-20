@@ -157,7 +157,7 @@ export default function UserDetailPage({ params }: { params: { userId: string } 
                 </AvatarFallback>
               </Avatar>
               <h2 className="text-xl font-bold">{user.displayName}</h2>
-              <p className="text-slate-500 dark:text-slate-400 mb-4">{user.email}</p>
+              <p className="text-muted-foreground mb-4">{user.email}</p>
               
               <div className="w-full mt-4">
                 <Label className="block mb-2">User Role</Label>
@@ -198,7 +198,7 @@ export default function UserDetailPage({ params }: { params: { userId: string } 
             </CardHeader>
             <CardContent>
               {userGroups.length === 0 ? (
-                <p className="text-slate-500 dark:text-slate-400 text-center py-4">
+                <p className="text-muted-foreground text-center py-4">
                   User is not assigned to any groups
                 </p>
               ) : (
@@ -207,7 +207,7 @@ export default function UserDetailPage({ params }: { params: { userId: string } 
                     <div key={group.id} className="p-3 border rounded-md flex justify-between items-center">
                       <div>
                         <p className="font-medium">{group.name}</p>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">
+                        <p className="text-sm text-muted-foreground">
                           {group.members.length} members
                         </p>
                       </div>
@@ -240,7 +240,7 @@ export default function UserDetailPage({ params }: { params: { userId: string } 
             </CardHeader>
             <CardContent>
               {approvedEvents.length === 0 ? (
-                <p className="text-slate-500 dark:text-slate-400 text-center py-4">
+                <p className="text-muted-foreground text-center py-4">
                   User has no direct event pre-approvals
                 </p>
               ) : (
@@ -249,7 +249,7 @@ export default function UserDetailPage({ params }: { params: { userId: string } 
                     <div key={event.id} className="p-3 border rounded-md flex justify-between items-center">
                       <div>
                         <p className="font-medium">{event.title}</p>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">
+                        <p className="text-sm text-muted-foreground">
                           {event.location}
                         </p>
                       </div>

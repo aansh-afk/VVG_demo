@@ -28,7 +28,7 @@ function AdminDashboardContent() {
         <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
         
         <Card className="mb-8">
-          <CardHeader className="bg-blue-50 dark:bg-blue-950">
+          <CardHeader>
             <CardTitle>Welcome, Admin</CardTitle>
             <CardDescription>
               You are logged in as an administrator
