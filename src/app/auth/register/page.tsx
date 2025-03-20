@@ -201,9 +201,11 @@ export default function RegisterPage() {
               </Button>
               <div className="text-center text-sm text-foreground">
                 Already have an account?{" "}
-                <Link href="/auth/login" className="text-primary hover:text-accent transition-colors duration-200">
-                  Sign in
-                </Link>
+                <Button asChild variant="secondary" size="sm" className="ml-2">
+                  <Link href="/auth/login">
+                    Sign in
+                  </Link>
+                </Button>
               </div>
             </CardFooter>
           </form>

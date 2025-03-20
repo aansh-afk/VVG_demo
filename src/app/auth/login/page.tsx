@@ -108,9 +108,11 @@ export default function LoginPage() {
               </Button>
               <div className="text-center text-sm text-foreground">
                 Don&apos;t have an account?{" "}
-                <Link href="/auth/register" className="text-primary hover:text-accent transition-colors duration-200 hover:underline">
-                  Register
-                </Link>
+                <Button asChild variant="secondary" size="sm" className="ml-2">
+                  <Link href="/auth/register">
+                    Register
+                  </Link>
+                </Button>
               </div>
             </CardFooter>
           </form>

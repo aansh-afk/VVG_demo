@@ -69,7 +69,7 @@ export default function AdminEventsPage() {
           <Card className="mb-6">
             <CardContent className="pt-6">
               <div className="text-center py-10">
-                <p className="text-lg text-slate-600 dark:text-slate-400">
+                <p className="text-lg text-foreground">
                   No events found. Create your first event to get started.
                 </p>
                 <Button 
@@ -86,17 +86,17 @@ export default function AdminEventsPage() {
             {events.map((event) => (
               <Card key={event.id} className="overflow-hidden">
                 <CardContent className="p-0">
-                  <div className="p-4 bg-white dark:bg-slate-800">
+                  <div className="p-4 bg-card-lighter">
                     <div className="flex justify-between items-start">
                       <div>
-                        <h2 className="text-xl font-semibold">{event.title}</h2>
-                        <p className="text-sm text-slate-500 dark:text-slate-400">
+                        <h2 className="text-xl font-semibold text-foreground">{event.title}</h2>
+                        <p className="text-sm text-muted-foreground">
                           {formatEventDate(event.datetime)}
                         </p>
-                        <p className="text-sm mt-1">
+                        <p className="text-sm mt-1 text-foreground">
                           Location: {event.location}
                         </p>
-                        <p className="text-sm mt-1">
+                        <p className="text-sm mt-1 text-foreground">
                           Capacity: {event.capacity} | Requires Approval: {event.requiresApproval ? "Yes" : "No"}
                         </p>
                       </div>
@@ -117,7 +117,7 @@ export default function AdminEventsPage() {
                         </Button>
                       </div>
                     </div>
-                    <p className="mt-2 line-clamp-2 text-slate-600 dark:text-slate-300">
+                    <p className="mt-2 line-clamp-2 text-foreground">
                       {event.description}
                     </p>
                   </div>

@@ -110,7 +110,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                 className={`flex items-center py-3 px-4 rounded-md transition-all duration-200 ${
                   isActive(item.href)
                     ? "bg-[#89A5E8] text-white font-medium border-l-4 border-white"
-                    : "text-sidebar-foreground hover:bg-[#89A5E8]/30 hover:text-white hover:translate-x-1"
+                    : "text-sidebar-foreground hover:bg-[#89A5E8]/30 hover:text-black hover:translate-x-1"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -143,7 +143,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                   className={`group flex items-center px-4 py-3 text-sm font-medium rounded-md transition-all duration-200 ${
                     isActive(item.href)
                       ? "bg-[#89A5E8] text-white font-medium border-l-4 border-white"
-                      : "text-sidebar-foreground hover:bg-[#89A5E8]/30 hover:text-white hover:translate-x-1"
+                      : "text-sidebar-foreground hover:bg-[#89A5E8]/30 hover:text-black hover:translate-x-1"
                   }`}
                 >
                   {item.name}

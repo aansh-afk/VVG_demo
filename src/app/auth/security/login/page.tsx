@@ -114,9 +114,11 @@ export default function SecurityLoginPage() {
                 {isLoading ? "Signing in..." : "Sign In as Security Staff"}
               </Button>
               <div className="text-center text-sm text-foreground">
-                <Link href="/auth/login" className="text-primary hover:text-accent transition-colors duration-200 hover:underline">
-                  Return to regular login
-                </Link>
+                <Button asChild variant="secondary" size="sm" className="mt-2">
+                  <Link href="/auth/login">
+                    Return to regular login
+                  </Link>
+                </Button>
               </div>
             </CardFooter>
           </form>

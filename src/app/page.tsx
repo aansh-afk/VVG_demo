@@ -59,7 +59,7 @@ export default function Home() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
-            <Card className="hover-effect border-border" style={{animationDelay: '0.2s'}}>
+            <Card className="hover-effect border-border bg-card-lighter" style={{animationDelay: '0.2s'}}>
               <CardHeader>
                 <CardTitle className="text-foreground">User Portal</CardTitle>
                 <CardDescription className="text-muted-foreground">For guests and attendees</CardDescription>
@@ -76,7 +76,7 @@ export default function Home() {
               </CardFooter>
             </Card>
 
-            <Card className="hover-effect border-border" style={{animationDelay: '0.3s'}}>
+            <Card className="hover-effect border-border bg-card-lighter" style={{animationDelay: '0.3s'}}>
               <CardHeader>
                 <CardTitle className="text-foreground">Admin Portal</CardTitle>
                 <CardDescription className="text-muted-foreground">For staff and organizers</CardDescription>
@@ -93,7 +93,7 @@ export default function Home() {
               </CardFooter>
             </Card>
 
-            <Card className="hover-effect border-border" style={{animationDelay: '0.4s'}}>
+            <Card className="hover-effect border-border bg-card-lighter" style={{animationDelay: '0.4s'}}>
               <CardHeader>
                 <CardTitle className="text-foreground">Security Portal</CardTitle>
                 <CardDescription className="text-muted-foreground">For security personnel</CardDescription>
