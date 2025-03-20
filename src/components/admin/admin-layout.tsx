@@ -84,7 +84,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
       {/* Mobile Header */}
       <div className="md:hidden bg-sidebar p-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
-          <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={40} height={30} priority />
+          <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={60} height={45} priority />
           <h1 className="ml-2 font-semibold text-sidebar-foreground">Secure Events Admin</h1>
         </div>
         <button
@@ -133,7 +133,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         <div className="sidebar flex-1 flex flex-col min-h-0 bg-sidebar">
           <div className="flex-1 flex flex-col overflow-y-auto">
             <div className="logo-container mb-5">
-              <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={60} height={40} priority className="hover-effect" />
+              <Image src="/ntt-logo.svg" alt="NTT Group Logo" width={100} height={70} priority className="hover-effect" />
             </div>
             <nav className="mt-2 flex-1 px-2 space-y-1">
               {navItems.map((item) => (

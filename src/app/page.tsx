@@ -43,8 +43,8 @@ export default function Home() {
             <Image 
               src="/ntt-logo.svg" 
               alt="NTT Group Logo" 
-              width={180} 
-              height={100} 
+              width={280} 
+              height={160} 
               className="mx-auto"
               priority
             />

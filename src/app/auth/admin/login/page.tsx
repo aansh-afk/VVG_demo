@@ -48,8 +48,8 @@ export default function AdminLoginPage() {
           <Image 
             src="/ntt-logo.svg" 
             alt="NTT Group Logo" 
-            width={140} 
-            height={80} 
+            width={220} 
+            height={130} 
             className="mx-auto mb-4"
             priority
           />
