@@ -23,8 +23,24 @@ export default function DashboardPage() {
     // Redirect if not logged in
     if (!isLoading && !user) {
       router.push("/auth/login");
+      return;
     }
-  }, [user, isLoading, router]);
+
+    // Check if user is admin or security, redirect to appropriate dashboard
+    if (!isLoading && userData) {
+      if (userData.role === 'admin') {
+        console.log("Admin user detected in user dashboard, redirecting to admin dashboard");
+        window.location.href = "/admin/dashboard";
+        return;
+      }
+      
+      if (userData.role === 'security') {
+        console.log("Security user detected in user dashboard, redirecting to security dashboard");
+        window.location.href = "/security/dashboard";
+        return;
+      }
+    }
+  }, [user, userData, isLoading, router]);
 
   useEffect(() => {
     // Fetch data when user is available

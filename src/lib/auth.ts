@@ -82,9 +82,12 @@ export const signOut = async () => {
     // Sign out from Firebase
     await firebaseSignOut(auth);
     
-    // Clear session cookie
+    // Clear all session cookies
     if (typeof document !== 'undefined') {
       document.cookie = "session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = "admin=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = "security=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      console.log("All cookies cleared on sign out");
     }
   } catch (error) {
     console.error("Error signing out:", error);
@@ -178,8 +181,16 @@ export const signInAsAdmin = async (email: string, password: string) => {
     
     // Set a session cookie for middleware to detect
     if (typeof document !== 'undefined') {
-      document.cookie = "session=true; path=/; max-age=86400";
-      document.cookie = "admin=true; path=/; max-age=86400";
+      // Delete any existing cookies first to avoid conflicts
+      document.cookie = "session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = "admin=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = "security=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      
+      // Set new cookies with proper expiration
+      document.cookie = "session=true; path=/; max-age=86400; SameSite=Strict";
+      document.cookie = "admin=true; path=/; max-age=86400; SameSite=Strict";
+      
+      console.log("Admin cookies set successfully");
     }
     
     return user;

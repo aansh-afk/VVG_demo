@@ -44,6 +44,18 @@ export function middleware(request: NextRequest) {
   // Debug information - make this visible in server logs
   console.log(`Path: ${path}, Public: ${isPublicPath}, Auth: ${hasFbSession ? 'Yes' : 'No'}, Admin: ${hasAdminSession ? 'Yes' : 'No'}, Security: ${hasSecuritySession ? 'Yes' : 'No'}`);
   
+  // If admin is trying to access regular dashboard, redirect to admin dashboard
+  if (hasAdminSession && path === '/dashboard') {
+    console.log('Admin trying to access regular dashboard, redirecting to admin dashboard');
+    return NextResponse.redirect(new URL('/admin/dashboard', request.url));
+  }
+  
+  // If security is trying to access regular dashboard, redirect to security dashboard
+  if (hasSecuritySession && path === '/dashboard') {
+    console.log('Security trying to access regular dashboard, redirecting to security dashboard');
+    return NextResponse.redirect(new URL('/security/dashboard', request.url));
+  }
+  
   // Admin route protection
   if (isAdminPath && !hasAdminSession) {
     console.log('Redirecting to admin login page');
