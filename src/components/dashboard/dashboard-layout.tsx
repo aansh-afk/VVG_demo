@@ -38,7 +38,32 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   ];
 
   const isActive = (path: string) => {
-    return pathname === path || pathname?.startsWith(path + "/");
+    // Exact match
+    if (pathname === path) {
+      return true;
+    }
+    
+    // Find the most specific match for nested routes
+    const currentPath = pathname || "";
+    
+    // Special case for dashboard - only match exact path
+    if (path === "/dashboard") {
+      return currentPath === path;
+    }
+    
+    // For other paths, check if it's a direct parent (but not a partial match)
+    if (currentPath.startsWith(path + "/")) {
+      // Make sure no other nav item is a better (more specific) match
+      const moreSpecificMatch = navItems.some(item => 
+        item.href !== path && 
+        item.href.startsWith(path + "/") && 
+        currentPath.startsWith(item.href)
+      );
+      
+      return !moreSpecificMatch;
+    }
+    
+    return false;
   };
 
   const getInitials = (name: string) => {
