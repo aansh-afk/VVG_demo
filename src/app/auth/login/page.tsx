@@ -45,23 +45,24 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4 bg-white dark:bg-slate-900">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
+    <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-white dark:bg-black">
+      <div className="w-full max-w-md fade-in">
+        <div className="text-center mb-8 hover-effect">
           <Image 
-            src="/vvg-logo.png" 
+            src="/vvg-logo.svg" 
             alt="VVG Logo" 
             width={100} 
             height={100} 
             className="mx-auto mb-4"
+            priority
           />
-          <h1 className="text-2xl font-bold text-black dark:text-white">VVG Demo</h1>
+          <h1 className="text-2xl font-bold text-black dark:text-white slide-up">VVG Demo</h1>
         </div>
 
-        <Card>
+        <Card className="bg-white dark:bg-black border-gray-200 dark:border-gray-800">
           <CardHeader>
             <CardTitle className="text-black dark:text-white">Sign In</CardTitle>
-            <CardDescription className="text-gray-500 dark:text-gray-400">
+            <CardDescription className="text-gray-700 dark:text-gray-400">
               Enter your email and password to access your account
             </CardDescription>
           </CardHeader>
@@ -113,6 +114,11 @@ export default function LoginPage() {
           </form>
         </Card>
       </div>
+      
+      <div className="w-full mt-16 footer-gradient"></div>
+      <footer className="w-full text-center py-4 text-sm text-gray-700 dark:text-gray-300">
+        © {new Date().getFullYear()} VVG. All rights reserved. | Demo Version
+      </footer>
     </div>
   );
 }

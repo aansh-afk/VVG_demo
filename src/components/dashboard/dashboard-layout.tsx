@@ -54,8 +54,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       {/* Mobile Header */}
       <div className="md:hidden bg-white dark:bg-black p-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
-          <Image src="/vvg-icon.png" alt="VVG Logo" width={40} height={40} />
-          <h1 className="ml-2 font-semibold">VVG Demo</h1>
+          <Image src="/vvg-logo.svg" alt="VVG Logo" width={40} height={40} priority />
+          <h1 className="ml-2 font-semibold text-black dark:text-white">VVG Demo</h1>
         </div>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -102,9 +102,9 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <div className="flex-1 flex flex-col min-h-0 bg-white dark:bg-black border-r border-slate-200 dark:border-gray-800">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div className="flex items-center justify-center flex-shrink-0 px-4 mb-5">
-              <Image src="/vvg-icon.png" alt="VVG Logo" width={50} height={50} />
-              <h1 className="ml-2 text-lg font-semibold">VVG Demo</h1>
+            <div className="flex items-center justify-center flex-shrink-0 px-4 mb-5 hover-effect">
+              <Image src="/vvg-logo.svg" alt="VVG Logo" width={50} height={50} priority />
+              <h1 className="ml-2 text-lg font-semibold text-black dark:text-white">VVG Demo</h1>
             </div>
             <nav className="mt-5 flex-1 px-2 space-y-1">
               {navItems.map((item) => (

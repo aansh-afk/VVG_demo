@@ -55,11 +55,11 @@ export function AdminLayout({ children }: AdminLayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-white dark:bg-black flex flex-col md:flex-row">
       {/* Mobile Header */}
-      <div className="md:hidden bg-black dark:bg-slate-800 p-4 flex items-center justify-between shadow-sm">
+      <div className="md:hidden bg-black p-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
-          <Image src="/vvg-icon.png" alt="VVG Logo" width={40} height={40} />
+          <Image src="/vvg-logo.svg" alt="VVG Logo" width={40} height={40} priority />
           <h1 className="ml-2 font-semibold text-white">VVG Admin</h1>
         </div>
         <button
@@ -76,7 +76,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-slate-800 shadow-md z-20 absolute top-16 inset-x-0">
+        <div className="md:hidden bg-black shadow-md z-20 absolute top-16 inset-x-0">
           <div className="flex flex-col p-4">
             {navItems.map((item) => (
               <Link
@@ -84,8 +84,8 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                 href={item.href}
                 className={`flex items-center py-3 px-4 rounded-md ${
                   isActive(item.href)
-                    ? "bg-gray-100 dark:bg-slate-700 text-black dark:text-white font-medium"
-                    : "text-slate-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800"
+                    ? "bg-gray-800 text-white font-medium"
+                    : "text-gray-300 hover:bg-gray-800"
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -94,7 +94,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
             ))}
             <Button 
               variant="outline" 
-              className="mt-4"
+              className="mt-4 border-white text-white hover:bg-gray-800"
               onClick={handleSignOut}
             >
               Sign Out
@@ -105,10 +105,10 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
       {/* Sidebar (desktop) */}
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <div className="flex-1 flex flex-col min-h-0 bg-black dark:bg-slate-800">
+        <div className="flex-1 flex flex-col min-h-0 bg-black">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div className="flex items-center justify-center flex-shrink-0 px-4 mb-5">
-              <Image src="/vvg-icon.png" alt="VVG Logo" width={50} height={50} />
+            <div className="flex items-center justify-center flex-shrink-0 px-4 mb-5 hover-effect">
+              <Image src="/vvg-logo.svg" alt="VVG Logo" width={50} height={50} priority />
               <h1 className="ml-2 text-lg font-semibold text-white">VVG Admin</h1>
             </div>
             <nav className="mt-5 flex-1 px-2 space-y-1">
@@ -116,10 +116,10 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`group flex items-center px-4 py-3 text-sm font-medium rounded-md ${
+                  className={`group flex items-center px-4 py-3 text-sm font-medium rounded-md transition-all duration-200 ${
                     isActive(item.href)
-                      ? "bg-gray-800 dark:bg-slate-700 text-white"
-                      : "text-gray-200 hover:bg-gray-700 dark:hover:bg-slate-700"
+                      ? "bg-gray-800 text-white"
+                      : "text-gray-300 hover:bg-gray-800"
                   }`}
                 >
                   {item.name}
@@ -139,7 +139,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                 </div>
                 <Button 
                   variant="ghost" 
-                  className="text-xs text-gray-300 hover:text-white p-0 h-auto"
+                  className="text-xs text-gray-300 hover:text-white p-0 h-auto transition-colors duration-200"
                   onClick={handleSignOut}
                 >
                   Sign out
@@ -152,9 +152,13 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
       {/* Main Content */}
       <div className="md:pl-64 flex flex-col flex-1">
-        <main className="flex-1">
+        <main className="flex-1 p-4 md:p-6 fade-in">
           {children}
         </main>
+        <div className="footer-gradient"></div>
+        <footer className="text-center py-4 text-sm text-gray-700 dark:text-gray-300">
+          © {new Date().getFullYear()} VVG Demo. All rights reserved.
+        </footer>
       </div>
     </div>
   );

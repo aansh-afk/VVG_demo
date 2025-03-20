@@ -63,23 +63,24 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4 bg-white dark:bg-black">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8 fade-in">
+    <div className="flex min-h-screen flex-col items-center justify-center p-4 bg-white dark:bg-black">
+      <div className="w-full max-w-md fade-in">
+        <div className="text-center mb-8 hover-effect">
           <Image 
-            src="/vvg-logo.png" 
+            src="/vvg-logo.svg" 
             alt="VVG Logo" 
             width={100} 
             height={100} 
-            className="mx-auto mb-4 hover-effect"
+            className="mx-auto mb-4"
+            priority
           />
-          <h1 className="text-2xl font-bold text-black dark:text-white">VVG Demo</h1>
+          <h1 className="text-2xl font-bold text-black dark:text-white slide-up">VVG Demo</h1>
         </div>
 
-        <Card className="border border-gray-200 dark:border-gray-800 slide-up">
+        <Card className="bg-white dark:bg-black border-gray-200 dark:border-gray-800 slide-up">
           <CardHeader>
-            <CardTitle>Create an account</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-black dark:text-white">Create an account</CardTitle>
+            <CardDescription className="text-gray-700 dark:text-gray-400">
               Enter your details to register for the VVG events platform
             </CardDescription>
           </CardHeader>
@@ -204,6 +205,11 @@ export default function RegisterPage() {
           </form>
         </Card>
       </div>
+      
+      <div className="w-full mt-16 footer-gradient"></div>
+      <footer className="w-full text-center py-4 text-sm text-gray-700 dark:text-gray-300">
+        © {new Date().getFullYear()} VVG. All rights reserved. | Demo Version
+      </footer>
     </div>
   );
 }
